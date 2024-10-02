@@ -1,0 +1,118 @@
+/* General settings */
+body {
+    font-family: 'Roboto', sans-serif; /* Roboto for body text */
+    background: url('https://img.freepik.com/premium-photo/beautiful-night-sky-night-starry-sky-dark-blue-space-background-with-stars-created-with-generative-ai-technology_965119-3914.jpg') no-repeat center center fixed;
+    background-size: cover;
+    color: #ffffff;
+    margin: 0;
+    padding: 20px;
+}
+
+/* Main heading (H1) */
+h1 {
+    text-align: center;
+    font-size: 3em;
+    color: #f39c12;
+    margin-bottom: 40px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.9);
+    font-family: 'Oswald', sans-serif;
+}
+
+/* Hero title (H2) */
+h2 {
+    text-align: center;
+    font-size: 2.5em;
+    color: #f39c12;
+    margin: 10px 0;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.9);
+    font-family: 'Oswald', sans-serif;
+    letter-spacing: 1px;
+}
+
+/* Description (Big all-caps text for the tagline) */
+.description {
+    position: absolute;
+    top: 50%;
+    right: -250px;
+    width: 220px;
+    background-color: rgba(0, 0, 0, 0.8);
+    color: #ffffff;
+    padding: 15px;
+    border-radius: 5px;
+    text-align: center;
+    transform: translateY(-50%);
+    opacity: 0;
+    transition: transform 0.3s ease, opacity 0.3s ease, right 0.3s ease;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.5em;
+    letter-spacing: 1.5px; /* Spread out the letters a bit */
+    text-transform: uppercase; /* All caps */
+}
+
+/* Powers and body text */
+.powers {
+    font-family: 'Roboto', sans-serif;
+    font-size: 1em;
+    line-height: 1.5;
+    opacity: 1;
+    transform: translateY(0);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.hero:hover .powers {
+    opacity: 0;
+    transform: translateY(-10px);
+}
+
+/* Hero card settings */
+.hero {
+    position: relative;
+    overflow: hidden;
+    background-color: rgba(50, 50, 50, 0.8);
+    border: 1px solid #f39c12;
+    border-radius: 10px;
+    padding: 20px;
+    margin: 20px auto;
+    max-width: 600px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.8);
+    transition: transform 0.3s ease;
+}
+
+/* Hero image */
+.hero img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    display: block;
+    margin: 0 auto;
+    transition: transform 0.3s ease;
+}
+
+.hero:hover img {
+    transform: translateX(-60px); /* Slide to the left */
+}
+
+/* Description on hover */
+.hero:hover .description {
+    right: 10px; /* Slide in the description */
+    opacity: 1;
+}
+
+/* Responsive settings for smaller screens */
+@media (max-width: 768px) {
+    h1 {
+        font-size: 2.5em;
+    }
+
+    h2 {
+        font-size: 1.8em;
+    }
+
+    .description {
+        font-size: 1.2em;
+    }
+
+    .hero {
+        padding: 15px;
+    }
+}
