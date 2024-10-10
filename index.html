@@ -33,7 +33,7 @@
         <div class="description">A tactical genius with a vendetta against superheroes.</div>
         <div class="powers">Powers: Skilled combatant, master tactician, and possesses a deep understanding of superheroes and their weaknesses.</div>
     </div>
-    
+
     <div class="hero">
         <img src="https://www.washingtonpost.com/wp-apps/imrs.php?src=https://arc-anglerfish-washpost-prod-washpost.s3.amazonaws.com/public/7EEP4HTMSZCY7O5LZH44IAHS4Y.jpg&w=1800&h=1800" alt="Batman">
         <h2>Batman</h2>
@@ -61,6 +61,73 @@
         <div class="description">The fastest man alive, part of The Seven.</div>
         <div class="powers">Powers: Super speed and agility, enhanced reflexes, and durability.</div>
     </div>
+
+    <!-- Chatbot UI -->
+    <div id="chatbot">
+        <div id="chatbox">
+            <div id="messages"></div>
+            <input type="text" id="userInput" placeholder="Ask me something...">
+            <button onclick="sendMessage()">Send</button>
+        </div>
+    </div>
+
+    <script>
+        const responses = {
+            greetings: ["Hi there!", "Hello!", "Greetings!", "Hey!"],
+            superheroes: ["Superheroes are beings with extraordinary powers. Who's your favorite superhero?", "I love superheroes! Do you have one in mind?"],
+            spiderMan: ["Spider-Man is known for his wall-crawling and web-slinging abilities!", "Did you know Spider-Man's real name is Peter Parker?"],
+            hulk: ["The Hulk becomes stronger the angrier he gets!", "Hulk smash! That's his way of showing strength."],
+            batman: ["Batman is the Dark Knight, relying on his intellect, technology, and combat skills.", "Did you know Batman's real name is Bruce Wayne?"],
+            unknown: ["I am not sure about that. Could you ask something else?", "Hmm, I don't have enough data for that question."]
+        };
+
+        function sendMessage() {
+            let userInput = document.getElementById("userInput").value.toLowerCase();
+            let messagesDiv = document.getElementById("messages");
+
+            if (userInput) {
+                addMessage("You: " + userInput, messagesDiv);
+
+                // Generate a more advanced bot response based on simple pattern recognition
+                let botResponse = generateAIResponse(userInput);
+                addMessage("Bot: " + botResponse, messagesDiv);
+
+                document.getElementById("userInput").value = ""; // Clear the input field
+                messagesDiv.scrollTop = messagesDiv.scrollHeight; // Scroll to bottom
+            }
+        }
+
+        function addMessage(text, messagesDiv) {
+            let message = document.createElement("div");
+            message.textContent = text;
+            messagesDiv.appendChild(message);
+        }
+
+        function generateAIResponse(userInput) {
+            // A simple keyword-based matching system for responses
+            if (containsAny(userInput, ["hello", "hi", "hey"])) {
+                return getRandomResponse(responses.greetings);
+            } else if (containsAny(userInput, ["superheroes", "hero", "heroes"])) {
+                return getRandomResponse(responses.superheroes);
+            } else if (containsAny(userInput, ["spider-man", "spiderman"])) {
+                return getRandomResponse(responses.spiderMan);
+            } else if (containsAny(userInput, ["hulk"])) {
+                return getRandomResponse(responses.hulk);
+            } else if (containsAny(userInput, ["batman"])) {
+                return getRandomResponse(responses.batman);
+            } else {
+                return getRandomResponse(responses.unknown);
+            }
+        }
+
+        function containsAny(text, words) {
+            return words.some(word => text.includes(word));
+        }
+
+        function getRandomResponse(responseArray) {
+            return responseArray[Math.floor(Math.random() * responseArray.length)];
+        }
+    </script>
 
 </body>
 
